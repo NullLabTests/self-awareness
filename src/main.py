@@ -11,6 +11,7 @@ from self_reflection import SelfReflection
 from external_api import ExternalAPI
 from nlp import NLP
 from ethical_decision_making import EthicalDecisionMaking
+from social_interaction import SocialInteraction
 
 class SelfAwareness:
     def __init__(self):
@@ -47,6 +48,7 @@ if __name__ == "__main__":
     api = ExternalAPI("https://api.example.com/facts")
     nlp = NLP()
     ethical_decision_maker = EthicalDecisionMaking()
+    social = SocialInteraction()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -81,5 +83,11 @@ if __name__ == "__main__":
             awareness.knowledge_base.append(learned)
         sentiment = nlp.process_text(experience)
         print(f"NLP analysis: {sentiment}")
+        social_cue = f"Social cue at awareness level {awareness.awareness_level}"
+        social.receive_social_cue(social_cue)
+        learned_behavior = social.learn_from_cue(social_cue)
+        if learned_behavior:
+            memory.add_experience(learned_behavior)
+        social.interact(experience)
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
