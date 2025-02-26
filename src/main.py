@@ -20,6 +20,7 @@ from contextual_understanding import ContextualUnderstanding
 from multi_agent_interaction import MultiAgentInteraction
 from predictive_modeling import PredictiveModeling
 from self_evaluation import SelfEvaluation
+from emotional_intelligence import EmotionalIntelligence
 
 class SelfAwareness:
     def __init__(self):
@@ -65,6 +66,7 @@ if __name__ == "__main__":
     multi_agent = MultiAgentInteraction()
     predictive_model = PredictiveModeling()
     self_evaluator = SelfEvaluation()
+    emotional_intelligence = EmotionalIntelligence()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -158,6 +160,9 @@ if __name__ == "__main__":
         adjustment = self_evaluator.evaluate_performance(performance_metric)
         if adjustment:
             self_evaluator.apply_adjustment(adjustment)
+        recognized_emotion = emotional_intelligence.recognize_emotion(experience)
+        response = emotional_intelligence.respond_to_emotion(recognized_emotion)
+        print(f"Emotional response: {response}")
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
