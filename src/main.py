@@ -7,6 +7,7 @@ from decision_making import DecisionMaking
 from communication import Communication
 from emotion import Emotion
 from goal_setting import GoalSetting
+from self_reflection import SelfReflection
 
 class SelfAwareness:
     def __init__(self):
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     comm = Communication()
     emotion = Emotion()
     goal_setter = GoalSetting()
+    self_reflector = SelfReflection()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -61,5 +63,7 @@ if __name__ == "__main__":
         goal_setter.set_goal(awareness.awareness_level)
         goal_setter.review_goals()
         goal_setter.check_progress(awareness.awareness_level)
+        self_reflector.reflect_on_self(awareness.awareness_level, experience, emotion.current_emotion)
+        self_reflector.review_reflections()
         viz.draw(awareness.awareness_level)
         time.sleep(1)
