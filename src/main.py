@@ -1,5 +1,6 @@
 import time
 import random
+from visualization import Visualization
 
 class SelfAwareness:
     def __init__(self):
@@ -25,8 +26,5 @@ class SelfAwareness:
 
 if __name__ == "__main__":
     awareness = SelfAwareness()
-    while True:
-        awareness.increase_awareness()
-        awareness.reflect()
-        awareness.ponder()
-        time.sleep(1)
+    viz = Visualization()
+    viz.run(awareness)
