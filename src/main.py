@@ -60,6 +60,7 @@ if __name__ == "__main__":
         received = comm.receive_message()
         print(f"Received message: {received}")
         emotion.update_emotion(awareness.awareness_level, experience)
+        emotion.review_emotions()
         goal_setter.set_goal(awareness.awareness_level)
         goal_setter.review_goals()
         goal_setter.check_progress(awareness.awareness_level)
