@@ -14,6 +14,7 @@ from ethical_decision_making import EthicalDecisionMaking
 from social_interaction import SocialInteraction
 from long_term_memory import LongTermMemory
 from self_improvement import SelfImprovement
+from real_time_data import RealTimeData
 
 class SelfAwareness:
     def __init__(self):
@@ -53,6 +54,7 @@ if __name__ == "__main__":
     social = SocialInteraction()
     ltm = LongTermMemory()
     self_improvement = SelfImprovement()
+    real_time = RealTimeData()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -102,6 +104,10 @@ if __name__ == "__main__":
         improvement = self_improvement.analyze_performance()
         if improvement:
             self_improvement.apply_improvement(improvement)
+        data_point = real_time.generate_data()
+        reaction = real_time.process_data(data_point, awareness.awareness_level)
+        if reaction:
+            print(f"Real-time reaction: {reaction}")
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
