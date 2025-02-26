@@ -1,6 +1,7 @@
 import time
 import random
 from visualization import Visualization
+from ml_adaptation import MLAdaptation
 
 class SelfAwareness:
     def __init__(self):
@@ -27,4 +28,15 @@ class SelfAwareness:
 if __name__ == "__main__":
     awareness = SelfAwareness()
     viz = Visualization()
-    viz.run(awareness)
+    ml = MLAdaptation()
+    while True:
+        external_input = random.uniform(0, 1)  # Simulating external input
+        new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
+        error = new_awareness - awareness.awareness_level
+        ml.update_weights(error)
+        awareness.awareness_level = new_awareness
+        awareness.increase_awareness()
+        awareness.reflect()
+        awareness.ponder()
+        viz.draw(awareness.awareness_level)
+        time.sleep(1)
