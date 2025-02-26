@@ -17,3 +17,6 @@ python3 src/main.py
 - `src/`: Contains the source code.
 - `docs/`: Contains documentation.
 - `README.md`: This file.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
