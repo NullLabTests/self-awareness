@@ -64,6 +64,7 @@ if __name__ == "__main__":
         goal_setter.set_goal(awareness.awareness_level)
         goal_setter.review_goals()
         goal_setter.check_progress(awareness.awareness_level)
+        goal_setter.adjust_goals(awareness.awareness_level)
         self_reflector.reflect_on_self(awareness.awareness_level, experience, emotion.current_emotion)
         self_reflector.review_reflections()
         viz.draw(awareness.awareness_level)
