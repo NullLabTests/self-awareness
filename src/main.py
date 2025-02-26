@@ -13,6 +13,7 @@ from nlp import NLP
 from ethical_decision_making import EthicalDecisionMaking
 from social_interaction import SocialInteraction
 from long_term_memory import LongTermMemory
+from self_improvement import SelfImprovement
 
 class SelfAwareness:
     def __init__(self):
@@ -51,6 +52,7 @@ if __name__ == "__main__":
     ethical_decision_maker = EthicalDecisionMaking()
     social = SocialInteraction()
     ltm = LongTermMemory()
+    self_improvement = SelfImprovement()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -95,6 +97,11 @@ if __name__ == "__main__":
         retrieved = ltm.retrieve_memory()
         if retrieved:
             print(f"Long-term memory recall: {retrieved}")
+        performance_metric = random.uniform(0, 1)  # Simulate performance metric
+        self_improvement.record_performance(performance_metric)
+        improvement = self_improvement.analyze_performance()
+        if improvement:
+            self_improvement.apply_improvement(improvement)
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
