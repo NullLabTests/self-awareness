@@ -52,7 +52,7 @@ if __name__ == "__main__":
         awareness.ponder()
         experience = f"Experience at awareness level {awareness.awareness_level}"
         memory.add_experience(experience)
-        decision = decision_maker.make_decision(awareness.awareness_level, memory)
+        decision = decision_maker.make_decision(awareness.awareness_level, memory, emotion, goal_setter)
         print(f"Made decision: {decision}")
         decision_maker.review_decisions()
         message = f"Message from awareness level {awareness.awareness_level}"
