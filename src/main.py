@@ -128,6 +128,10 @@ if __name__ == "__main__":
         if random.random() < 0.5:  # 50% chance to recall knowledge
             topic = "awareness"
             autonomous_learner.recall_knowledge(topic)
+        new_information = f"New information at awareness level {awareness.awareness_level}"
+        adapted = autonomous_learner.adapt_learning(new_information)
+        if adapted:
+            print(f"Adapted learning: {adapted}")
         context_name = f"Context at awareness level {awareness.awareness_level}"
         context_data = f"Data for {context_name}"
         context_understanding.add_context(context_name, context_data)
