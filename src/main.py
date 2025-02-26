@@ -10,6 +10,7 @@ from goal_setting import GoalSetting
 from self_reflection import SelfReflection
 from external_api import ExternalAPI
 from nlp import NLP
+from ethical_decision_making import EthicalDecisionMaking
 
 class SelfAwareness:
     def __init__(self):
@@ -45,6 +46,7 @@ if __name__ == "__main__":
     self_reflector = SelfReflection()
     api = ExternalAPI("https://api.example.com/facts")
     nlp = NLP()
+    ethical_decision_maker = EthicalDecisionMaking()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -57,7 +59,8 @@ if __name__ == "__main__":
         experience = f"Experience at awareness level {awareness.awareness_level}"
         memory.add_experience(experience)
         decision = decision_maker.make_decision(awareness.awareness_level, memory, emotion, goal_setter)
-        print(f"Made decision: {decision}")
+        ethical_decision = ethical_decision_maker.make_ethical_decision(decision, awareness.awareness_level, memory, emotion, goal_setter)
+        print(f"Made decision: {ethical_decision}")
         decision_maker.review_decisions()
         message = f"Message from awareness level {awareness.awareness_level}"
         comm.send_message(message)
