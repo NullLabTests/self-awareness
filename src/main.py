@@ -15,6 +15,7 @@ from social_interaction import SocialInteraction
 from long_term_memory import LongTermMemory
 from self_improvement import SelfImprovement
 from real_time_data import RealTimeData
+from autonomous_learning import AutonomousLearning
 
 class SelfAwareness:
     def __init__(self):
@@ -55,6 +56,7 @@ if __name__ == "__main__":
     ltm = LongTermMemory()
     self_improvement = SelfImprovement()
     real_time = RealTimeData()
+    autonomous_learner = AutonomousLearning()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -108,6 +110,16 @@ if __name__ == "__main__":
         reaction = real_time.process_data(data_point, awareness.awareness_level)
         if reaction:
             print(f"Real-time reaction: {reaction}")
+        skill_to_learn = f"Skill at awareness level {awareness.awareness_level}"
+        autonomous_learner.learn_skill(skill_to_learn)
+        knowledge_to_learn = f"Knowledge at awareness level {awareness.awareness_level}"
+        autonomous_learner.learn_knowledge(knowledge_to_learn)
+        if random.random() < 0.5:  # 50% chance to apply a skill
+            skill_to_apply = random.choice(autonomous_learner.skills)
+            autonomous_learner.apply_skill(skill_to_apply)
+        if random.random() < 0.5:  # 50% chance to recall knowledge
+            topic = "awareness"
+            autonomous_learner.recall_knowledge(topic)
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
