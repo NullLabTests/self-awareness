@@ -47,7 +47,7 @@ if __name__ == "__main__":
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
         error = new_awareness - awareness.awareness_level
-        ml.update_weights(error)
+        ml.update_weights(error, awareness.awareness_level, external_input)
         awareness.awareness_level = new_awareness
         awareness.increase_awareness()
         awareness.reflect()
