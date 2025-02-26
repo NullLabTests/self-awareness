@@ -16,6 +16,7 @@ from long_term_memory import LongTermMemory
 from self_improvement import SelfImprovement
 from real_time_data import RealTimeData
 from autonomous_learning import AutonomousLearning
+from contextual_understanding import ContextualUnderstanding
 
 class SelfAwareness:
     def __init__(self):
@@ -57,6 +58,7 @@ if __name__ == "__main__":
     self_improvement = SelfImprovement()
     real_time = RealTimeData()
     autonomous_learner = AutonomousLearning()
+    context_understanding = ContextualUnderstanding()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -120,6 +122,13 @@ if __name__ == "__main__":
         if random.random() < 0.5:  # 50% chance to recall knowledge
             topic = "awareness"
             autonomous_learner.recall_knowledge(topic)
+        context_name = f"Context at awareness level {awareness.awareness_level}"
+        context_data = f"Data for {context_name}"
+        context_understanding.add_context(context_name, context_data)
+        current_state = f"Current state at awareness level {awareness.awareness_level}"
+        understood_context = context_understanding.understand_context(context_name, current_state)
+        if understood_context:
+            print(f"Understood context: {understood_context}")
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
