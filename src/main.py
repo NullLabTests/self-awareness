@@ -6,6 +6,7 @@ from memory import Memory
 from decision_making import DecisionMaking
 from communication import Communication
 from emotion import Emotion
+from goal_setting import GoalSetting
 
 class SelfAwareness:
     def __init__(self):
@@ -37,6 +38,7 @@ if __name__ == "__main__":
     decision_maker = DecisionMaking()
     comm = Communication()
     emotion = Emotion()
+    goal_setter = GoalSetting()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -56,5 +58,8 @@ if __name__ == "__main__":
         received = comm.receive_message()
         print(f"Received message: {received}")
         emotion.update_emotion(awareness.awareness_level, experience)
+        goal_setter.set_goal(awareness.awareness_level)
+        goal_setter.review_goals()
+        goal_setter.check_progress(awareness.awareness_level)
         viz.draw(awareness.awareness_level)
         time.sleep(1)
