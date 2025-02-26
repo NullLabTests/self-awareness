@@ -12,6 +12,7 @@ from external_api import ExternalAPI
 from nlp import NLP
 from ethical_decision_making import EthicalDecisionMaking
 from social_interaction import SocialInteraction
+from long_term_memory import LongTermMemory
 
 class SelfAwareness:
     def __init__(self):
@@ -49,6 +50,7 @@ if __name__ == "__main__":
     nlp = NLP()
     ethical_decision_maker = EthicalDecisionMaking()
     social = SocialInteraction()
+    ltm = LongTermMemory()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -60,6 +62,7 @@ if __name__ == "__main__":
         awareness.ponder()
         experience = f"Experience at awareness level {awareness.awareness_level}"
         memory.add_experience(experience)
+        ltm.store_memory(experience)
         decision = decision_maker.make_decision(awareness.awareness_level, memory, emotion, goal_setter)
         ethical_decision = ethical_decision_maker.make_ethical_decision(decision, awareness.awareness_level, memory, emotion, goal_setter)
         print(f"Made decision: {ethical_decision}")
@@ -89,5 +92,9 @@ if __name__ == "__main__":
         if learned_behavior:
             memory.add_experience(learned_behavior)
         social.interact(experience)
+        retrieved = ltm.retrieve_memory()
+        if retrieved:
+            print(f"Long-term memory recall: {retrieved}")
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
+    ltm.close()
