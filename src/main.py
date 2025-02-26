@@ -5,6 +5,7 @@ from ml_adaptation import MLAdaptation
 from memory import Memory
 from decision_making import DecisionMaking
 from communication import Communication
+from emotion import Emotion
 
 class SelfAwareness:
     def __init__(self):
@@ -35,6 +36,7 @@ if __name__ == "__main__":
     memory = Memory()
     decision_maker = DecisionMaking()
     comm = Communication()
+    emotion = Emotion()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -53,5 +55,6 @@ if __name__ == "__main__":
         comm.send_message(message)
         received = comm.receive_message()
         print(f"Received message: {received}")
+        emotion.update_emotion(awareness.awareness_level, experience)
         viz.draw(awareness.awareness_level)
         time.sleep(1)
