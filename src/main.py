@@ -17,6 +17,7 @@ from self_improvement import SelfImprovement
 from real_time_data import RealTimeData
 from autonomous_learning import AutonomousLearning
 from contextual_understanding import ContextualUnderstanding
+from multi_agent_interaction import MultiAgentInteraction
 
 class SelfAwareness:
     def __init__(self):
@@ -59,6 +60,7 @@ if __name__ == "__main__":
     real_time = RealTimeData()
     autonomous_learner = AutonomousLearning()
     context_understanding = ContextualUnderstanding()
+    multi_agent = MultiAgentInteraction()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -129,6 +131,15 @@ if __name__ == "__main__":
         understood_context = context_understanding.understand_context(context_name, current_state)
         if understood_context:
             print(f"Understood context: {understood_context}")
+        agent_id = f"Agent at awareness level {awareness.awareness_level}"
+        agent_data = {
+            'response': lambda msg: f"Received message '{msg}' and responded"
+        }
+        multi_agent.add_agent(agent_id, agent_data)
+        message_to_agents = f"Message from awareness level {awareness.awareness_level}"
+        responses = multi_agent.interact_with_agents(message_to_agents)
+        if responses:
+            print(f"Received responses: {responses}")
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
