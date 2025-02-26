@@ -19,6 +19,7 @@ from autonomous_learning import AutonomousLearning
 from contextual_understanding import ContextualUnderstanding
 from multi_agent_interaction import MultiAgentInteraction
 from predictive_modeling import PredictiveModeling
+from self_evaluation import SelfEvaluation
 
 class SelfAwareness:
     def __init__(self):
@@ -63,6 +64,7 @@ if __name__ == "__main__":
     context_understanding = ContextualUnderstanding()
     multi_agent = MultiAgentInteraction()
     predictive_model = PredictiveModeling()
+    self_evaluator = SelfEvaluation()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -148,6 +150,10 @@ if __name__ == "__main__":
         predicted_state = predictive_model.predict_future_state(current_state)
         if predicted_state:
             print(f"Predicted future state: {predicted_state}")
+        performance_metric = random.uniform(0, 1)  # Simulate performance metric
+        adjustment = self_evaluator.evaluate_performance(performance_metric)
+        if adjustment:
+            self_evaluator.apply_adjustment(adjustment)
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
