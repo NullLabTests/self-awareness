@@ -18,6 +18,7 @@ from real_time_data import RealTimeData
 from autonomous_learning import AutonomousLearning
 from contextual_understanding import ContextualUnderstanding
 from multi_agent_interaction import MultiAgentInteraction
+from predictive_modeling import PredictiveModeling
 
 class SelfAwareness:
     def __init__(self):
@@ -61,6 +62,7 @@ if __name__ == "__main__":
     autonomous_learner = AutonomousLearning()
     context_understanding = ContextualUnderstanding()
     multi_agent = MultiAgentInteraction()
+    predictive_model = PredictiveModeling()
     while True:
         external_input = random.uniform(0, 1)  # Simulating external input
         new_awareness = ml.adapt_awareness(awareness.awareness_level, external_input)
@@ -140,6 +142,12 @@ if __name__ == "__main__":
         responses = multi_agent.interact_with_agents(message_to_agents)
         if responses:
             print(f"Received responses: {responses}")
+        current_state = [awareness.awareness_level, random.uniform(0, 1)]  # Simulating current state
+        future_state = awareness.awareness_level + random.uniform(0, 1)  # Simulating future state
+        predictive_model.update_model(current_state, future_state)
+        predicted_state = predictive_model.predict_future_state(current_state)
+        if predicted_state:
+            print(f"Predicted future state: {predicted_state}")
         viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
     ltm.close()
