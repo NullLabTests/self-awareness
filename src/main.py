@@ -68,5 +68,5 @@ if __name__ == "__main__":
         self_reflector.reflect_on_self(awareness.awareness_level, experience, emotion.current_emotion)
         self_reflector.review_reflections()
         self_reflector.analyze_reflections()
-        viz.draw(awareness.awareness_level)
+        viz.draw(awareness.awareness_level, emotion.current_emotion, goal_setter.goals)
         time.sleep(1)
